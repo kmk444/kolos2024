@@ -5,8 +5,8 @@ public class DigitalClock extends Clock {
     }
     private Type type;
 
-    public DigitalClock(int hour, int minute, int second, Type type) {
-        setTime(hour, minute, second);
+    public DigitalClock(int hour, int minute, int second, City city, Type type) {
+        super(hour, minute, second, city);
         this.type = type;
     }
 

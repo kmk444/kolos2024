@@ -7,8 +7,18 @@ public class Main {
     public static void main(String[] args) {
 
         HashMap<String, City> cities =  City.parseFile("strefy.csv");
+        City oslo = cities.get("Oslo");
+        City vancouver = cities.get("Vancouver");
 
-        System.out.println(Arrays.asList(cities.toString()));
+
+        DigitalClock clock = new DigitalClock(0,20,22, oslo, DigitalClock.Type.HOUR_24);
+        System.out.println(clock);
+        System.out.println(clock.currentCity() + " " + oslo.getSummerTimezone());
+
+
+        clock.setCity(vancouver);
+        System.out.println(clock);
+        System.out.println(clock.currentCity() + " " + vancouver.getSummerTimezone());
 
 
     }

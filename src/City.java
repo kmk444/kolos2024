@@ -9,6 +9,23 @@ public class City {
     private double longitude;
     private double latitude;
 
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public int getSummerTimezone() {
+        return summerTimezone;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
     public City(String capital, int summerTimezone, double longitude, double latitude) {
         this.capital = capital;
         this.summerTimezone = summerTimezone;

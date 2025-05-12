@@ -1,9 +1,20 @@
 import java.time.LocalDateTime;
 
 public abstract class Clock {
-    private int hour = 0;
-    private int minute = 0;
-    private int second = 0;
+    private int hour;
+    private int minute;
+    private int second;
+    private City city;
+
+    public Clock(int hour, int minute, int second, City city) {
+
+        this.city = city;
+        setTime(hour,minute,second);
+    }
+
+    public String currentCity() { //tymczasowe
+        return city.getCapital();
+    }
 
     public int getHour() {
         return hour;
@@ -25,7 +36,7 @@ public abstract class Clock {
         if (hour>24 || hour<0) throw new IllegalArgumentException("Error: an hour should be a value between 0 and 24.");
         else if (minute>60 || minute<0) throw new IllegalArgumentException("Error: a minute should be a value between 0 and 60.");
         else if (second>60 || second<0) throw new IllegalArgumentException("Error: a second should be a value between 0 and 60.");
-        this.hour = hour;
+        this.hour = Math.abs(hour + city.getSummerTimezone());
         this.minute = minute;
         this.second = second;
     }
@@ -38,4 +49,11 @@ public abstract class Clock {
         setTime(localHour,localMinute,localSecond);
     }
 
+    public void setCity(City newCity){
+        int timeDifference = newCity.getSummerTimezone() - this.city.getSummerTimezone();
+        int newHour = (this.hour + timeDifference + 24) % 24;
+
+        this.city = newCity;
+        setTime(newHour, this.minute, this.second);
+    }
 }
