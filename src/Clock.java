@@ -5,6 +5,18 @@ public abstract class Clock {
     private int minute = 0;
     private int second = 0;
 
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public int getSecond() {
+        return second;
+    }
+
     public String toString(){
         return String.format("%02d:%02d:%02d",hour,minute,second);
     }

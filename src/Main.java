@@ -1,18 +1,15 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-//        Clock c = new Clock();
-//        System.out.println(c);
-//
-//        c.setTime(21,37,22);
-//        System.out.println(c);
-//
-//        c.setCurrentTime();
-//        System.out.println(c);
-//
-//        c.setTime(61,-1,22);
-//        System.out.println(c);
+
+        HashMap<String, City> cities =  City.parseFile("strefy.csv");
+
+        System.out.println(Arrays.asList(cities.toString()));
+
+
     }
 }
