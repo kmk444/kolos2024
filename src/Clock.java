@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public abstract class Clock {
     private int hour;
@@ -32,6 +33,11 @@ public abstract class Clock {
         return String.format("%02d:%02d:%02d",hour,minute,second);
     }
 
+    public LocalTime toLocalTime(){
+        return LocalTime.of(this.getHour(), this.getMinute(), this.getSecond());
+    }
+
+
     public void setTime(int hour, int minute, int second) throws IllegalArgumentException {
         if (hour>24 || hour<0) throw new IllegalArgumentException("Error: an hour should be a value between 0 and 24.");
         else if (minute>60 || minute<0) throw new IllegalArgumentException("Error: a minute should be a value between 0 and 60.");
@@ -42,7 +48,7 @@ public abstract class Clock {
     }
 
     public void setCurrentTime() {
-        LocalDateTime local = LocalDateTime.now();
+        LocalTime local = LocalTime.now();
         int localHour = local.getHour();
         int localMinute = local.getMinute();
         int localSecond = local.getSecond();

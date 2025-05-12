@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 
 public class City {
@@ -78,4 +81,14 @@ public class City {
             throw new RuntimeException(e);
         }
     }
+
+
+    public LocalTime localMeanTime(LocalTime timezoneTime) {
+        double offsetHours = this.longitude / 15.0; // długość geograficzna -> przesunięcie godzinowe
+        long totalSeconds = Math.round(offsetHours * 3600); // przelicz godziny na sekundy
+        LocalTime utcTime = timezoneTime.minusHours(this.summerTimezone); // Konwertuj czas strefowy na UTC (odejmij strefę czasową miasta)
+        LocalTime localTime = utcTime.plusSeconds(totalSeconds); // Dodaj przesunięcie geograficzne do UTC
+        return localTime.truncatedTo(ChronoUnit.SECONDS); // Zaokrąglij do sekund (np. 11:30:16.123 -> 11:30:16)
+    }
+
 }
