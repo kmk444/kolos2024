@@ -31,10 +31,21 @@ public class Main {
         AnalogClock clock = new AnalogClock(12,37,10, lublin);
         clock.toSvg("0.svg");
 
-        SecondHand sh = new SecondHand("blue",3,70);
-        LocalTime time = LocalTime.of(12,30,30);
+
+
+        LocalTime time = LocalTime.of(21,40,0);
+
+        SecondHand sh = new SecondHand("lightsalmon",2,70);
         sh.setTime(time);
         System.out.println(sh.toSvg());
+
+        MinuteHand mh = new MinuteHand("indigo",4,50);
+        mh.setTime(time);
+        System.out.println(mh.toSvg());
+
+        HourHand hh = new HourHand("black",6,30);
+        hh.setTime(time);
+        System.out.println(hh.toSvg());
 
 
     }

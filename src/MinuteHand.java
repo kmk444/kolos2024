@@ -1,10 +1,10 @@
 import java.time.LocalTime;
 import java.util.Locale;
 
-public class SecondHand extends ClockHand {
-    private double second;
+public class MinuteHand extends ClockHand{
+    private double minute;
 
-    public SecondHand(String stroke, double strokeWidth, double strokeLength){
+    public MinuteHand(String stroke, double strokeWidth, double strokeLength){
         this.stroke = stroke;
         this.strokeWidth = strokeWidth;
         this.strokeLength = -strokeLength;
@@ -12,8 +12,8 @@ public class SecondHand extends ClockHand {
 
     @Override
     public void setTime(LocalTime time) {
-        this.second = time.getSecond();
-        this.angle = second * 6;
+        this.minute = time.getMinute();
+        this.angle = minute * 6 + (time.getSecond()*6*0.1);
     }
 
     @Override
