@@ -28,8 +28,7 @@ public class Main {
 //        System.out.println(lublinClock.toLocalTime());
 //        System.out.println(lublin.localMeanTime(lublinClock.toLocalTime()));
 
-        AnalogClock clock = new AnalogClock(12,37,10, lublin);
-        clock.toSvg("0.svg");
+
 
 
 
@@ -37,15 +36,17 @@ public class Main {
 
         SecondHand sh = new SecondHand("lightsalmon",2,70);
         sh.setTime(time);
-        System.out.println(sh.toSvg());
 
         MinuteHand mh = new MinuteHand("indigo",4,50);
         mh.setTime(time);
-        System.out.println(mh.toSvg());
 
         HourHand hh = new HourHand("black",6,30);
         hh.setTime(time);
-        System.out.println(hh.toSvg());
+
+        AnalogClock clock = new AnalogClock(0,30,0, lublin, hh, mh, sh);
+        clock.toSvg("before.svg");
+        clock.setTime(16,0,0);
+        clock.toSvg("after.svg");
 
 
     }

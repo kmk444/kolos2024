@@ -13,7 +13,7 @@ public class MinuteHand extends ClockHand{
     @Override
     public void setTime(LocalTime time) {
         this.minute = time.getMinute();
-        this.angle = minute * 6 + (time.getSecond()*6*0.1);
+        this.angle = minute * 6 + time.getSecond()*0.1;
     }
 
     @Override
