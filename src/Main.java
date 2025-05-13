@@ -31,6 +31,11 @@ public class Main {
         AnalogClock clock = new AnalogClock(12,37,10, lublin);
         clock.toSvg("0.svg");
 
+        SecondHand sh = new SecondHand("blue",3,70);
+        LocalTime time = LocalTime.of(12,30,30);
+        sh.setTime(time);
+        System.out.println(sh.toSvg());
+
 
     }
 }
