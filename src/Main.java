@@ -24,9 +24,13 @@ public class Main {
 
 
         City lublin = cities.get("Lublin");
-        DigitalClock lublinClock = new DigitalClock(10,0,0, lublin, DigitalClock.Type.HOUR_24);
-        System.out.println(lublinClock.toLocalTime());
-        System.out.println(lublin.localMeanTime(lublinClock.toLocalTime()));
+//        DigitalClock lublinClock = new DigitalClock(10,0,0, lublin, DigitalClock.Type.HOUR_24);
+//        System.out.println(lublinClock.toLocalTime());
+//        System.out.println(lublin.localMeanTime(lublinClock.toLocalTime()));
+
+        AnalogClock clock = new AnalogClock(12,37,10, lublin);
+        clock.toSvg("0.svg");
+
 
     }
 }
